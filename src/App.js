@@ -17,24 +17,20 @@ class App extends Component {
       steps: [{
         title: 'Source Version Controls',
         icon: 'user-add',
-        desc: 'Add your SVC accounts',
-        content: 'First-content'
+        desc: 'Add your SVC accounts'
       }, {
         title: 'Repositories',
         icon: 'folder',
-        desc: 'Choose which repositories to be reported',
-        content: 'Second-content'
+        desc: 'Choose which repositories to be reported'
       }, {
         title: 'Personal information',
         icon: 'idcard',
-        desc: 'Edit your personal information',
-        content: 'Last-content'
+        desc: 'Edit your personal information'
       },
       {
         title: 'Profile',
         icon: 'smile-o',
-        desc: 'Your OSS profile',
-        content: 'Last-content'
+        desc: 'Your OSS profile'
       }]
     }
   }
@@ -80,7 +76,7 @@ class App extends Component {
           </Header>
           <Content style={{ padding: '24px', paddingBottom: 0 }}>
             <div style={{ background: '#fff', padding: 24, minHeight: 500 }}>
-              <Steps current={this.state.currentStep} style={{ width: '80%', margin: '0 auto', padding: '10px 0'}}>
+              <Steps current={this.state.currentStepv} style={{ width: '80%', margin: '0 auto', padding: '10px 0'}}>
                 {this.state.steps.map(item => <Step key={item.title} title={item.title} description={item.desc} icon={<Icon type={item.icon}/>}/>)}
               </Steps>
               <Divider style={{ width: '60%', margin: '24px auto'}}/>
