@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {LocaleProvider, Layout, Menu, message} from 'antd'
 import {Steps, Icon, Button, Divider} from 'antd'
-import SVC from './SVC/SVC'
-import Repos from './Repos/Repos'
-import Personal from './Personal/Personal'
-import Profile from './Profile/Profile'
+import SVC from '../components/SVC/SVC'
+import Repos from '../components/Repos/Repos'
+import Personal from '../components/Personal/Personal'
+import Profile from '../components/Profile/Profile'
 import './App.css'
 const {Header, Footer, Content} = Layout
 const Step = Steps.Step
