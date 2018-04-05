@@ -8,7 +8,7 @@ import App from './containers/App';
 import registerServiceWorker from './registerServiceWorker';
 
 import { createStore } from 'redux'
-import reducer from '../store/reducer'
+import reducer from './store/reducer'
 import { Provider } from 'react-redux'
 
 const store = createStore(reducer)

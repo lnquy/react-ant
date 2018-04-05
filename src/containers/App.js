@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {LocaleProvider, Layout, Menu, message} from 'antd'
 import {Steps, Icon, Button, Divider} from 'antd'
-import SVC from '../components/SVC/SVC'
+import SVC from './SVC/SVC'
 import Repos from '../components/Repos/Repos'
 import Personal from '../components/Personal/Personal'
 import Profile from '../components/Profile/Profile'
@@ -21,7 +21,7 @@ class App extends Component {
       }, {
         title: 'Repositories',
         icon: 'folder',
-        desc: 'Choose which repositories to be reported'
+        desc: 'Choose repos to be reported'
       }, {
         title: 'Personal information',
         icon: 'idcard',
@@ -74,34 +74,35 @@ class App extends Component {
               <Menu.Item key="3">About</Menu.Item>
             </Menu>
           </Header>
-          <Content style={{ padding: '24px', paddingBottom: 0 }}>
-            <div style={{ background: '#fff', padding: 24, minHeight: 500 }}>
-              <Steps current={this.state.currentStepv} style={{ width: '80%', margin: '0 auto', padding: '10px 0'}}>
-                {this.state.steps.map(item => <Step key={item.title} title={item.title} description={item.desc} icon={<Icon type={item.icon}/>}/>)}
-              </Steps>
-              <Divider style={{ width: '60%', margin: '24px auto'}}/>
-              <div className="steps-content">
-                {this.switchStepContent()}
-              </div>
-              <div className="steps-action" style={{ paddingTop: '24px' }}>
-                {
-                  this.state.currentStep < this.state.steps.length - 1
-                  &&
-                  <Button type="primary" onClick={() => this.next()}>Next</Button>
-                }
-                {
-                  this.state.currentStep === this.state.steps.length - 1
-                  &&
-                  <Button type="primary" onClick={() => message.success('Processing complete!')}>Done</Button>
-                }
-                {
-                  this.state.currentStep > 0
-                  &&
-                  <Button style={{ marginLeft: 8 }} onClick={() => this.prev()}>
-                    Previous
-                  </Button>
-                }
-              </div>
+
+          <div style={{ padding: 16 }}>
+            <Steps size="small" current={this.state.currentStepv} style={{ width: '60%', margin: '0 auto', padding: '10px 0'}}>
+              {this.state.steps.map(item => <Step className='svc-step' key={item.title} title={item.title} description={item.desc} icon={<Icon type={item.icon}/>}/>)}
+            </Steps>
+          </div>
+          <Content style={{ position: 'relative', backgroundColor: 'white', margin: '0 24px',  padding: '24px', paddingBottom: 0, minHeight: 500 }}>
+            <div className="steps-content">
+              {this.switchStepContent()}
+
+              <div className="steps-action" style={{ position: 'absolute', right: 16, bottom: 16 }}>
+              {
+                this.state.currentStep > 0
+                &&
+                <Button style={{ marginRight: 8 }} onClick={() => this.prev()}>
+                  Previous
+                </Button>
+              }
+              {
+                this.state.currentStep < this.state.steps.length - 1
+                &&
+                <Button type="primary" onClick={() => this.next()}>Next</Button>
+              }
+              {
+                this.state.currentStep === this.state.steps.length - 1
+                &&
+                <Button type="primary" onClick={() => message.success('Processing complete!')}>Done</Button>
+              }
+            </div>
             </div>
           </Content>
           <Footer style={{ textAlign: 'center' }}>
